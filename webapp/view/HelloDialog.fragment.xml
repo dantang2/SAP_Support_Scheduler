@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog id="helloDialog" title="Options">
+		<content>
+			<ComboBox editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
+				<items>
+					<core:Item text="Chat" enabled="true" key="Chat"/>
+					<core:Item text="MCS" enabled="true" key="MCS"/>
+					<core:Item text="Project" enabled="true" key="Project"/>
+				</items>
+			</ComboBox>
+		</content>
+		<beginButton>
+			<Button text="Submit" press="onCloseDialog"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

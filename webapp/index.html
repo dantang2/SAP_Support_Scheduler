@@ -5,18 +5,35 @@
     <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <title>PS-Scheduler</title>
+
 <!-- Load UI5, select gold reflection theme and the "commons" and "table" control libraries -->
   <script id='sap-ui-bootstrap' type='text/javascript'
     src='https://openui5.hana.ondemand.com/resources/sap-ui-core.js'
-    data-sap-ui-theme='sap_bluecrystal'
+    data-sap-ui-theme='sap_belize'
     data-sap-ui-libs='sap.m, sap.f'
     data-sap-ui-compatVersion="edge"
     data-sap-ui-preload="async"
     data-sap-ui-resourceroots='{"productSupport.scheduler":""}'
     data-sap-ui-frameOptions="trusted">
   </script>
+
+  <script type="text/javascript">
+    sap.ui.getCore().attachInit(function (){
+
+      new sap.m.Shell({
+        app : new sap.ui.core.ComponentContainer({
+          name : "productSupport.scheduler",
+          settings : {
+            id : "scheduler"
+          }
+        })
+      }).placeAt("content");
+    });
+
+  </script>
   </head>
-  <body>
-    test
+  <body class="sapUiBody" id="content">
+
   </body>
 </html>

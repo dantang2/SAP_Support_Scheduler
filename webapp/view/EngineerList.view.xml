@@ -1,0 +1,20 @@
+<mvc:View controllerName="productSupport.scheduler.controller.EngineerList" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core" xmlns:unified="sap.ui.unified">
+	<VBox>
+		<PlanningCalendar id = "engineerList" height="auto" width="auto" rows="{path: 'engineer>/Engineers', parameters: {$count: true}}">
+			<toolbarContent>
+				<ToolbarSpacer/>
+				<SearchField id="searchField" width="20%" placeholder="Search" search="onSearch"/>
+				<Button id="sortUsersButton" press="onSort" tooltip="Search" icon="sap-icon://sort"/>
+				<Button id="refreshUsersButton"
+					icon="sap-icon://refresh"
+					tooltip="{i18n>refreshButtonText}"
+					press="onRefresh"/>
+			</toolbarContent>
+			<rows>
+				<PlanningCalendarRow title="{engineer>EngineerName}" text="{engineer>Email}">
+				</PlanningCalendarRow>
+			</rows>
+		</PlanningCalendar>
+	</VBox>
+</mvc:View>

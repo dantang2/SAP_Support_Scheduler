@@ -1,0 +1,16 @@
+<mvc:View controllerName="productSupport.scheduler.controller.HelloPanel" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+	<Panel headerText="Admin" class="sapUiResponsiveMargin" width="auto">
+		<content>
+			<Select width="auto" maxWidth="100%" icon="" enabled="true" type="Default" textAlign="Center" valueState="None" forceSelection="false">
+				<items>
+					<core:Item key="ADMIN" text="ADMIN" enabled="true"/>
+					<core:Item key="WEBI" text="WEBI" enabled="true"/>
+				</items>
+			</Select>
+			<Button id="helloDialogButton" text="Schedule" press="onOpenDialog" class="sapUiSmallMarginEnd" icon="sap-icon://check-availability"/>
+			<Button text="{i18n>showHelloButtonText}" press="onShowHello" class="myCustomButton"/>
+			<Input value="{/recipient/name}" valueLiveUpdate="true" width="60%"/>
+			<FormattedText htmlText="Hello {/recipient/name}" class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
+		</content>
+	</Panel>
+</mvc:View>

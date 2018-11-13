@@ -1,11 +1,1 @@
-{
-	"Engineers": [{
-		"EngineerName": "Dan Tang",
-		"Team": "ADMIN",
-		"Email": "dan.tang@sap.com"
-	}, {
-		"EngineerName": "Kenneth Tsang",
-		"Team": "WEBI",
-		"Email": "kenneth.tsang@sap.com"
-	}]
-}
+{"Engineers":[{"fname":"Dan","lname":"Tang","team":"ADMIN","email":"dan.tang@sap.com"},{"fname":"Kenneth","lname":"Tsang","team":"WEBI","email":"kenneth.tsang@sap.com"}]}

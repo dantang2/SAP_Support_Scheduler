@@ -18,13 +18,16 @@ sap.ui.define([
         UIComponent.prototype.init.apply(this, arguments);
 
         var oData = {
-          recipient: {
-            name: ""
+          thisEngineer: {
+            fname: "",
+						lname: "",
+						email: ""
           }
         };
 
         var oModel = new JSONModel(oData);
-        this.setModel(models.createDeviceModel(), "device");
+				this.setModel(oModel);
+        //this.setModel(models.createDeviceModel(), "device");
 
         this._helloDialog = new HelloDialog(this.getRootControl());
         this._addUserDialog = new AddUserDialog(this.getRootControl());

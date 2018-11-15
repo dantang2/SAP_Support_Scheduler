@@ -12,7 +12,7 @@
 					press="onRefresh"/>
 			</toolbarContent>
 			<rows>
-				<PlanningCalendarRow title="{engineer>EngineerName}" text="{engineer>Email}">
+				<PlanningCalendarRow title="{engineer>fname}" text="{engineer>email}">
 				</PlanningCalendarRow>
 			</rows>
 		</PlanningCalendar>

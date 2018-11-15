@@ -1,4 +1,4 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" controllerName="productSupport.scheduler.controller.AddUserDialog">
 	<Dialog id="addUserDialog" title="Add Engineer">
 		<content>
 			<form:Form width="auto" editable="true" visible="true">
@@ -7,13 +7,19 @@
 						<form:formElements>
 							<form:FormElement visible="true">
 								<form:fields>
-									<Input type="Text" placeholder="{engineer>/Engineers/0/EngineerName}" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"
+									<Input type="Text" fieldGroupIds="fname_input" placeholder="First Name" name="fname" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"
 										maxLength="0"/>
 								</form:fields>
 							</form:FormElement>
 							<form:FormElement visible="true">
 								<form:fields>
-									<Input type="Text" placeholder="Email" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
+									<Input type="Text" fieldGroupIds="lname_input" placeholder="Last Name" name="lname" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"
+										maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:fields>
+									<Input type="Email" fieldGroupIds="email_input" placeholder="Email" name="Email" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
 								</form:fields>
 							</form:FormElement>
 							<form:FormElement visible="true">
@@ -21,13 +27,16 @@
 									<Label text="Team" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 								</form:label>
 								<form:fields>
-									<Select width="auto" maxWidth="100%" icon="" enabled="true" type="Default" textAlign="Center" valueState="None" forceSelection="false">
+									<Select width="auto" fieldGroupIds="team_input" maxWidth="100%" icon="" enabled="true" type="Default" textAlign="Center" valueState="None" forceSelection="false">
 										<items>
 											<core:Item key="ADMIN" text="ADMIN" enabled="true"/>
 											<core:Item key="WEBI" text="WEBI" enabled="true"/>
 										</items>
 									</Select>
 								</form:fields>
+							</form:FormElement>
+              <form:FormElement visible="true">
+	               <Button type="Accept" text="Submit" press="onAddUser"/>
 							</form:FormElement>
 						</form:formElements>
 						<form:title/>
@@ -42,7 +51,7 @@
 			<Button type="Reject" text="Cancel" press="onCloseDialog"/>
 		</beginButton>
 		<endButton>
-			<Button type="Accept" text="Submit" press="onCloseDialog"/>
+			<Button type="Accept" value="test" text="Submit" press="onAddUser"/>
 		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

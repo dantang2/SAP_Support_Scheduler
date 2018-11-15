@@ -1,1 +1,6 @@
-{"Engineers":[{"fname":"Dan","lname":"Tang","team":"ADMIN","email":"dan.tang@sap.com"},{"fname":"Kenneth","lname":"Tsang","team":"WEBI","email":"kenneth.tsang@sap.com"}]}
+{
+  "Engineers":[
+    {"fname":"Dan","lname":"Tang","team":"ADMIN","email":"dan.tang@sap.com"},
+    {"fname":"Kenneth","lname":"Tsang","team":"WEBI","email":"kenneth.tsang@sap.com"}
+  ]
+}

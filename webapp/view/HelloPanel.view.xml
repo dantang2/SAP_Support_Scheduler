@@ -9,8 +9,8 @@
 			</Select>
 			<Button id="helloDialogButton" text="Schedule" press="onOpenDialog" class="sapUiSmallMarginEnd" icon="sap-icon://check-availability"/>
 			<Button text="{i18n>showHelloButtonText}" press="onShowHello" class="myCustomButton"/>
-			<Input value="{/recipient/name}" valueLiveUpdate="true" width="60%"/>
-			<FormattedText htmlText="Hello {/recipient/name}" class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
+			<Input value="{/thisEngineer/fname}" valueLiveUpdate="true" width="60%"/>
+			<FormattedText htmlText="Hello {/thisEngineer/fname}" class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
 		</content>
 	</Panel>
 </mvc:View>

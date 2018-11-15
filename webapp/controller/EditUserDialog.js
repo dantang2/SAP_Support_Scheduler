@@ -7,7 +7,7 @@ sap.ui.define([
 ], function (ManagedObject, JSONModel, MessageToast, Controller, Fragment) {
 	"use strict";
 
-	return Controller.extend("productSupport.scheduler.controller.AddUserDialog", {
+	return Controller.extend("productSupport.scheduler.controller.EditUserDialog", {
 
 		onInit: function () {
 			/*var oModel = new sap.ui.model.json.JSONModel("http:"+"//services.odata.org/V3/northwind/northwind.svc/Customers?$format=json");
@@ -29,8 +29,8 @@ sap.ui.define([
 
 		open: function () {
 			if (!this._oDialog){
-				this._oDialog = sap.ui.xmlfragment("productSupport.scheduler.view.AddUserDialog", this);
-				this._oDialog.setModel(sap.ui.getCore().byId("addUserDialog").getModel());
+				this._oDialog = sap.ui.xmlfragment("productSupport.scheduler.view.EditUserDialog", this);
+				this._oDialog.setModel(sap.ui.getCore().byId("editUserDialog").getModel());
 			}
 			jQuery.sap.syncStyleClass("sapUiSizeCompact", this.getView(), this._oDialog);
 			this._oDialog.open();
@@ -40,14 +40,15 @@ sap.ui.define([
 			this._oDialog.close();
 		},
 
-		onAddUser: function (oEvent) {
+		onEditUser: function (oEvent) {
 			//var test = oEvent.getSource();
 			var fname = sap.ui.getCore().byFieldGroupId("fname_input")[0].getValue();
 			var lname = sap.ui.getCore().byFieldGroupId("lname_input")[0].getValue();
 			var email = sap.ui.getCore().byFieldGroupId("email_input")[0].getValue();
 			var team = sap.ui.getCore().byFieldGroupId("team_input")[0].getSelectedKey();
-			document.location.href="controller/addUser.php?fname="+fname+"&lname="+lname+"&email="+email+"&team="+team;
-			//MessageToast.show(fname+lname+email+team);
+			//document.location.href="controller/editUser.php?fname="+fname+"&lname="+lname+"&email="+email+"&team="+team;
+			MessageToast.show("do nothing");
+      this._oDialog.close();
 		}
 
 	});

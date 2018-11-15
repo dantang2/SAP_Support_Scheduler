@@ -1,5 +1,5 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" controllerName="productSupport.scheduler.controller.AddUserDialog">
-	<Dialog id="addUserDialog" title="Add Engineer">
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" controllerName="productSupport.scheduler.controller.EditUserDialog">
+	<Dialog id="editUserDialog" title="Edit Engineer">
 		<content>
 			<form:Form width="auto" editable="true" visible="true">
 				<form:formContainers>
@@ -48,7 +48,7 @@
 			<Button type="Reject" text="Cancel" press="onCloseDialog"/>
 		</beginButton>
 		<endButton>
-			<Button type="Accept" value="test" text="Add" press="onAddUser"/>
+			<Button type="Accept" value="test" text="Save" press="onEditUser"/>
 		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

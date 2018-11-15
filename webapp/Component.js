@@ -4,8 +4,9 @@ sap.ui.define([
 	"sap/ui/model/resource/ResourceModel",
 	"productSupport/scheduler/controller/HelloDialog",
 	"productSupport/scheduler/controller/AddUserDialog",
+	"productSupport/scheduler/controller/EditUserDialog",
 	"productSupport/scheduler/model/models"
-], function (UIComponent, JSONModel, ResourceModel, HelloDialog, AddUserDialog, models) {
+], function (UIComponent, JSONModel, ResourceModel, HelloDialog, AddUserDialog, EditUserDialog, models) {
 
     "use strict";
 
@@ -31,6 +32,7 @@ sap.ui.define([
 
         this._helloDialog = new HelloDialog(this.getRootControl());
         this._addUserDialog = new AddUserDialog(this.getRootControl());
+				this._editUserDialog = new EditUserDialog(this.getRootControl());
 
       },
 
@@ -45,7 +47,11 @@ sap.ui.define([
 
       openAddUserDialog: function() {
         this._addUserDialog.open();
-      }
+      },
+
+			openEditUserDialog: function() {
+				this._editUserDialog.open();
+			}
 
     });
 });

@@ -5,6 +5,11 @@ sap.ui.define([
 	return Controller.extend("productSupport.scheduler.controller.App", {
 		onOpenDialog: function () {
 			this.getOwnerComponent().openAddUserDialog();
+		},
+
+		onOpenEditDialog: function () {
+			this.getOwnerComponent().openEditUserDialog();
 		}
+
 	});
 });

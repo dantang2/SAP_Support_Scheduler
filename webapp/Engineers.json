@@ -1,6 +1,1 @@
-{
-  "Engineers":[
-    {"fname":"Dan","lname":"Tang","team":"ADMIN","email":"dan.tang@sap.com"},
-    {"fname":"Kenneth","lname":"Tsang","team":"WEBI","email":"kenneth.tsang@sap.com"}
-  ]
-}
+{"ADMIN":[{"fname":"Dan","lname":"Tang","team":"ADMIN","email":"dan.tang@sap.com"},{"fname":"test","lname":"test","team":"ADMIN","email":"test"}],"WEBI":[{"fname":"Kenneth","lname":"Tsang","team":"WEBI","email":"kenneth.tsang@sap.com"},{"fname":"test","lname":"test","team":"WEBI","email":"test"}]}

@@ -37,6 +37,7 @@ sap.ui.define([
 		},
 
 		onCloseDialog: function () {
+			MessageToast.show(new Date("2015", "0", "15", "08", "30"));
 			this._oDialog.close();
 		},
 

@@ -23,41 +23,13 @@ sap.ui.define([
 				this.getView().setModel(oModel,"app");
 		},
 
-		onRefresh: function () {
-			var oBinding = this.byId("engineerList").getBinding("rows");
-
-
-			oBinding.refresh();
-			sap.m.MessageToast.show(this._getText("refreshSuccessMessage"));
+		onSelected: function(){
+			MessageToast.show("test");
 		},
 
-		onSearch : function () {
-			var oView = this.getView(),
-				sValue = oView.byId("searchField").getValue(),
-				oFilter = [new sap.ui.model.Filter("EngineerName", sap.ui.model.FilterOperator.Contains, sValue)];
+		dateFormatter: function(s){
+			return new Date(s[0], s[1], s[2], s[3], s[4]);
 
-				oView.byId("engineerList").getBinding("items").filter(oFilter, FilterType.Application);
-		},
-
-		onSort : function () {
-			var oView = this.getView(),
-				aStates = [undefined, "asc", "desc"],
-				aStateTextIds = ["sortNone", "sortAscendng", "sortDescending"],
-				sMessage,
-				iOrder = oView.getModel("app").getProperty("/order");
-
-				iOrder = (iOrder+1) % aStates.length;
-				var sOrder = aStates[iOrder];
-
-				oView.getModel("app").setProperty("/order", iOrder);
-				oView.byId("engineerList").getBinding("items").sort(sOrder && new Sorter("EngineerName", sOrder === "desc"));
-
-				sMessage = this._getText("sortMessage", [this._getText(aStateTextIds[iOrder])]);
-				sap.m.MessageToast.show(sMessage);
-		},
-
-		_getText: function (sTextId, aArgs){
-			return this.getOwnerComponent().getModel("i18n").getResourceBundle().getText(sTextId, aArgs);
 		}
 	});
 });

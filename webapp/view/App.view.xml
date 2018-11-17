@@ -6,6 +6,7 @@
 					<Button icon="sap-icon://add-employee" press="onOpenDialog"/>
 				</headerContent>
 				<content>
+					<Button id="scheduleButton" text="Schedule" press="onSchedule" class="sapUiSmallMarginEnd" icon="sap-icon://check-availability"/>
 					<mvc:XMLView viewName="productSupport.scheduler.view.HelloPanel"/>
 					<mvc:XMLView viewName="productSupport.scheduler.view.EngineerList"/>
 				</content>

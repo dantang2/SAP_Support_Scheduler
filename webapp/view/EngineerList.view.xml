@@ -1,7 +1,7 @@
 <mvc:View controllerName="productSupport.scheduler.controller.EngineerList" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core" xmlns:unified="sap.ui.unified">
 	<VBox>
-		<PlanningCalendar id = "engineerList" height="auto" width="auto" rows="{path: 'engineer>/ADMIN', parameters: {$count: true}}">
+		<PlanningCalendar id = "engineerList" height="auto" width="auto" rows="{path: 'engineer>/ADMIN'}" showRowHeaders="true">
 			<toolbarContent>
 				<ToolbarSpacer/>
 				<SearchField id="searchField" width="20%" placeholder="Search" search="onSearch"/>
@@ -12,7 +12,25 @@
 					press="onRefresh"/>
 			</toolbarContent>
 			<rows>
-				<PlanningCalendarRow title="{engineer>fname}" text="{engineer>email}">
+				<PlanningCalendarRow title="{engineer>fname}" text="{engineer>email}" key="{engineer>email}" >
+				</PlanningCalendarRow>
+			</rows>
+		</PlanningCalendar>
+		<PlanningCalendar id = "engineerList2" height="auto" width="auto" rows="{path: 'engineer>/WEBI', parameters: {$count: true}}">
+			<rows>
+				<PlanningCalendarRow title="{engineer>fname}" text="{engineer>email}" appointments="{path: 'engineer>appointments', templateShareable: 'true'}">
+					<appointments>
+						<unified:CalendarAppointment
+								startDate="{path: 'engineer>start', formatter: '.dateFormatter'}"
+								endDate="{path: 'engineer>end', formatter: '.dateFormatter'}"
+								title="{engineer>title}"
+								text="{engineer>info}"
+								type="{engineer>type}"
+								tentative="{tentative}"
+						>
+
+						</unified:CalendarAppointment>
+					</appointments>
 				</PlanningCalendarRow>
 			</rows>
 		</PlanningCalendar>

@@ -3,11 +3,10 @@
 		<pages>
 			<Page title="Product Support Scheduler">
 				<headerContent>
-					<Button icon="sap-icon://add-employee" press="onOpenDialog"/>
 				</headerContent>
 				<content>
-					<Button id="scheduleButton" text="Schedule" press="onSchedule" class="sapUiSmallMarginEnd" icon="sap-icon://check-availability"/>
-					<mvc:XMLView viewName="productSupport.scheduler.view.HelloPanel"/>
+					<Button id="scheduleButton" text="Schedule" press="onOpenAppointmentDialog" class="sapUiSmallMarginEnd" icon="sap-icon://check-availability"/>
+					<Button id ="addEngineerButton" icon="sap-icon://add-employee" press="onOpenDialog"/>
 					<mvc:XMLView viewName="productSupport.scheduler.view.EngineerList"/>
 				</content>
 			</Page>

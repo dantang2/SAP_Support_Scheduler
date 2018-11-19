@@ -3,10 +3,11 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/model/resource/ResourceModel",
 	"productSupport/scheduler/controller/HelloDialog",
-	"productSupport/scheduler/controller/AddUserDialog",
-	"productSupport/scheduler/controller/EditUserDialog",
+	"productSupport/scheduler/controller/AddEngineerDialog",
+	"productSupport/scheduler/controller/EditEngineerDialog",
+	"productSupport/scheduler/controller/AddAppointmentDialog",
 	"productSupport/scheduler/model/models"
-], function (UIComponent, JSONModel, ResourceModel, HelloDialog, AddUserDialog, EditUserDialog, models) {
+], function (UIComponent, JSONModel, ResourceModel, HelloDialog, AddEngineerDialog, EditEngineerDialog, AddAppointmentDialog, models) {
 
     "use strict";
 
@@ -31,8 +32,9 @@ sap.ui.define([
         //this.setModel(models.createDeviceModel(), "device");
 
         this._helloDialog = new HelloDialog(this.getRootControl());
-        this._addUserDialog = new AddUserDialog(this.getRootControl());
-				this._editUserDialog = new EditUserDialog(this.getRootControl());
+        this._addEngineerDialog = new AddEngineerDialog(this.getRootControl());
+				this._editEngineerDialog = new EditEngineerDialog(this.getRootControl());
+				this._addAppointmentDialog = new AddAppointmentDialog(this.getRootControl());
 
       },
 
@@ -45,12 +47,16 @@ sap.ui.define([
         this._helloDialog.open();
       },
 
-      openAddUserDialog: function() {
-        this._addUserDialog.open();
+      openAddEngineerDialog: function() {
+        this._addEngineerDialog.open();
       },
 
-			openEditUserDialog: function() {
-				this._editUserDialog.open();
+			openEditEngineerDialog: function() {
+				this._editEngineerDialog.open();
+			},
+
+			openAddAppointmentDialog: function() {
+				this._addAppointmentDialog.open();
 			}
 
     });

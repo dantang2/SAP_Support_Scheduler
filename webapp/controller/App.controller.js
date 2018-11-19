@@ -4,12 +4,18 @@ sap.ui.define([
 	"use strict";
 	return Controller.extend("productSupport.scheduler.controller.App", {
 		onOpenDialog: function () {
-			this.getOwnerComponent().openAddUserDialog();
+			this.getOwnerComponent().openAddEngineerDialog();
 		},
 
 		onOpenEditDialog: function () {
-			this.getOwnerComponent().openEditUserDialog();
+			this.getOwnerComponent().openEditEngineerDialog();
+		},
+
+		onOpenAppointmentDialog: function() {
+			this.getOwnerComponent().openAddAppointmentDialog();
 		}
+
+
 
 	});
 });

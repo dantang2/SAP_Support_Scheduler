@@ -1,0 +1,73 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" controllerName="productSupport.scheduler.controller.AddAppointmentDialog">
+	<Dialog id="addAppointmentDialog" title="Add Appointment">
+		<content>
+			<form:Form width="auto" editable="true" visible="true">
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:fields>
+									<Input type="Text" fieldGroupIds="engineer_input" placeholder="Engineer Name" name="eng_name" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"
+										maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:fields>
+									<Input type="Email" fieldGroupIds="email_input" placeholder="Email" name="Email" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Task" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Select class="sapUiSmallMarginBottom" width="auto" fieldGroupIds="task_input" maxWidth="100%" icon="" enabled="true" type="Default" textAlign="Center" valueState="None" forceSelection="false">
+										<items>
+											<core:Item key="CHAT" text="CHAT" enabled="true"/>
+											<core:Item key="MCS" text="MCS" enabled="true"/>
+										</items>
+									</Select>
+								</form:fields>
+							</form:FormElement>
+              <form:FormElement visible="true">
+                <form:fields>
+                  <DateTimeInput
+                    fieldGroupIds="startTime"
+                    type="Time"
+                    placeholder="Start Time"/>
+                </form:fields>
+              </form:FormElement>
+              <form:FormElement visible="true">
+                <form:fields>
+                  <DateTimeInput
+                    fieldGroupIds="endTime"
+                    type="Time"
+                    placeholder="End Time"
+                    class="sapUiSmallMarginBottom"/>
+                </form:fields>
+              </form:FormElement>
+              <form:FormElement visible="true">
+                <form:fields>
+                  <DateRangeSelection
+                    fieldGroupIds="dateRange"
+                    placeholder="Select Dates"
+                    class="sapUiSmallMarginBottom"/>
+                </form:fields>
+              </form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+		</content>
+		<beginButton>
+			<Button type="Reject" text="Cancel" press="onCloseDialog"/>
+		</beginButton>
+		<endButton>
+			<Button type="Accept" text="Add" press="onAddAppointment"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

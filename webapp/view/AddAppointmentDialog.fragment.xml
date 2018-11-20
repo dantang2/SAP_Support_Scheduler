@@ -5,6 +5,19 @@
 				<form:formContainers>
 					<form:FormContainer visible="true">
 						<form:formElements>
+              <form:FormElement visible="true">
+                <form:label>
+                  <Label text="Team" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                </form:label>
+                <form:fields>
+                  <Select width="auto" fieldGroupIds="team_input" maxWidth="100%" icon="" enabled="true" type="Default" textAlign="Center" valueState="None" forceSelection="false">
+                    <items>
+                      <core:Item key="ADMIN" text="ADMIN" enabled="true"/>
+                      <core:Item key="WEBI" text="WEBI" enabled="true"/>
+                    </items>
+                  </Select>
+                </form:fields>
+              </form:FormElement>
 							<form:FormElement visible="true">
 								<form:fields>
 									<Input type="Text" fieldGroupIds="engineer_input" placeholder="Engineer Name" name="eng_name" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"

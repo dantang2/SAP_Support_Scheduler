@@ -21,8 +21,9 @@
     $data = json_decode($jsonString, true);
 
 
+    $appointments = Array();
 
-    $newEngineer = Array('fname'=>$fname,'lname'=>$lname,'team'=>$team,'email'=>$email);
+    $newEngineer = Array('fname'=>$fname,'lname'=>$lname,'team'=>$team,'email'=>$email, 'appointments'=>$appointments);
 
     array_push($data[$team],$newEngineer);
 

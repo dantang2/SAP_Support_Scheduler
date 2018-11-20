@@ -5,8 +5,8 @@
 				<headerContent>
 				</headerContent>
 				<content>
-					<Button id="scheduleButton" text="Schedule" press="onOpenAppointmentDialog" class="sapUiSmallMarginEnd" icon="sap-icon://check-availability"/>
-					<Button id ="addEngineerButton" icon="sap-icon://add-employee" press="onOpenDialog"/>
+					<Button id="scheduleButton" text="Schedule" press="onOpenAppointmentDialog" class="sapUiSmallMargin" icon="sap-icon://check-availability"/>
+					<Button id ="addEngineerButton" icon="sap-icon://add-employee" class="sapUiSmallMargin" press="onOpenDialog"/>
 					<mvc:XMLView viewName="productSupport.scheduler.view.EngineerList"/>
 				</content>
 			</Page>

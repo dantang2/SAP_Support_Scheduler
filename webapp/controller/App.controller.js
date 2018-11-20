@@ -3,6 +3,10 @@ sap.ui.define([
 ], function (Controller) {
 	"use strict";
 	return Controller.extend("productSupport.scheduler.controller.App", {
+		onInit: function(){
+			this.getView().getModel();
+		},
+
 		onOpenDialog: function () {
 			this.getOwnerComponent().openAddEngineerDialog();
 		},

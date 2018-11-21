@@ -61,10 +61,12 @@ sap.ui.define([
       var endMonth = endDate.getUTCMonth();
       var endDay = endDate.getUTCDate();
 
+      var msPerDay = 86400000;
+      var numOfDays = (endDate.getTime()-startDate.getTime())/msPerDay;
 
 
 
-			document.location.href="controller/addAppointment.php?eng_name="+eng_name
+			  document.location.href="controller/addAppointment.php?eng_name="+eng_name
         +"&email="+email
         +"&task="+task
         +"&team="+team
@@ -79,7 +81,10 @@ sap.ui.define([
         +"&endMonth="+endDate.getUTCMonth()
         +"&endDay="+endDate.getUTCDate()
         +"&endHour="+endTime.getHours()
-        +"&endMinutes="+endTime.getMinutes();
+        +"&endMinutes="+endTime.getMinutes()
+        +"&numOfDays="+numOfDays;
+
+
 
 
 		}

@@ -14,13 +14,30 @@
   $endYear = $_GET['endYear'];
   $endMonth = $_GET['endMonth'];
   $endDay = $_GET['endDay'];
+
   $endHour = $_GET['endHour'];
   $endMinutes = $_GET['endMinutes'];
 
-  //$startDate = "[\"$startYear\", \"$startMonth\", \"$startDay\", \"$startHour\", \"$startMinutes\"]";
-  $startDate = Array($startYear,$startMonth,$startDay,$startHour,$startMinutes);
-  //$endDate = "[\"$startYear\", \"$startMonth\", \"$startDay\", \"$endHour\", \"$endMinutes\"]";
-  $endDate = Array($endYear,$endMonth,$endDay,$endHour,$endMinutes);
+  $numOfDays = $_GET['numOfDays'];
+
+
+  //$startDate = Array($startYear,$startMonth,$startDay,$startHour,$startMinutes);
+  //$endDate = Array($endYear,$endMonth,$endDay,$endHour,$endMinutes);
+
+  $appointments = Array();
+
+  while($numOfDays >= 0){
+
+
+    $startTime = Array($startYear,$startMonth,$startDay,$startHour,$startMinutes);
+    $endTime = Array($startYear,$startMonth,$startDay,$endHour,$endMinutes);
+
+    $appointments[$numOfDays] = Array('start'=>$startTime, 'end'=>$endTime, 'title'=>$task, 'info'=>"test", 'type'=>"Type07");
+
+    $startDay = $startDay + 1;
+    $numOfDays = $numOfDays - 1;
+  }
+
 
 
   $conn = connectToDB();
@@ -35,39 +52,34 @@
     $conn->exec($sql);
     echo "Engineer Added";*/
 
+
     $jsonString = file_get_contents($jsonFile);
     $data = json_decode($jsonString, true);
 
 
-    $newAppointment = Array('start'=>$startDate, 'end'=>$endDate, 'title'=>$task, 'info'=>"test", 'type'=>"Type07");
-
-    print_r($newAppointment);
     foreach ($data[$team] as $e){
       if ($e['email']==$email){
         $index = array_search($e,$data[$team]);
-        array_push($data[$team][$index]['appointments'],$newAppointment);
-        $newJsonString = json_encode($data);
+        foreach($appointments as $app){
+          array_push($data[$team][$index]['appointments'],$app);
+          $newJsonString = json_encode($data);
+        }
         file_put_contents($jsonFile, $newJsonString);
         echo "success";
         break;
       } else{
-        echo "engineer not found";
+        //echo "engineer not found";
       }
     }
 
-    /*array_push($data[$team]);
-
-    $newJsonString = json_encode($data);
-    file_put_contents($jsonFile, $newJsonString);*/
 
   }
   catch(PDOException $e){
     echo "Connection failed: ".$e->getMessage();
   }
 
-/*  echo "<script type=\"text/javascript\">
+  echo "<script type=\"text/javascript\">
    document.location.href=\"../\";
- </script>";*/
-
+   </script>";
 
 ?>

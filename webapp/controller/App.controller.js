@@ -17,9 +17,12 @@ sap.ui.define([
 
 		onOpenAppointmentDialog: function() {
 			this.getOwnerComponent().openAddAppointmentDialog();
+		},
+
+		onTest: function(oEvent) {
+			var team = sap.ui.getCore().byFieldGroupId("select")[0].getSelectedKey();
+			sap.m.MessageToast.show(team);
 		}
-
-
 
 	});
 });

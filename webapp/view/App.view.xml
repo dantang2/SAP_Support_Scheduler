@@ -3,12 +3,6 @@
 		<pages>
 			<Page title="Product Support Scheduler">
 				<headerContent class="sapUiSmallMargin">
-					<Select width="auto" maxWidth="100%" icon="" enabled="true" type="Default" textAlign="Center" valueState="None" forceSelection="false">
-						<items>
-							<core:Item key="ADMIN" text="ADMIN" enabled="true"/>
-							<core:Item key="WEBI" text="WEBI" enabled="true"/>
-						</items>
-					</Select>
 				</headerContent>
 				<content>
 					<Button id="scheduleButton" text="Schedule" press="onOpenAppointmentDialog" class="sapUiSmallMargin" icon="sap-icon://check-availability"/>

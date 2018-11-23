@@ -21,6 +21,10 @@ sap.ui.define([
 
 				var oModel = new JSONModel(oJSONData);
 				this.getView().setModel(oModel,"app");
+
+				var oCarousel = this.byId("calendarCarousel");
+				oCarousel.setArrowsPlacement(sap.m.CarouselArrowsPlacement.PageIndicator);
+				oCarousel.setPageIndicatorPlacement(sap.m.PlacementType.Top);
 		},
 
 		onSelected: function(){
@@ -29,7 +33,13 @@ sap.ui.define([
 
 		dateFormatter: function(s){
 			return new Date(s[0], s[1], s[2], s[3], s[4]);
+		},
 
+		handleAppointmentSelect: function(oEvent) {
+			var oAppointment = oEvent.getParameter("appointment"),sSelected;
 		}
+
+
+
 	});
 });

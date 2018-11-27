@@ -27,17 +27,80 @@ sap.ui.define([
 				oCarousel.setPageIndicatorPlacement(sap.m.PlacementType.Top);
 		},
 
-		onSelected: function(){
-			MessageToast.show("test");
-		},
-
 		dateFormatter: function(s){
-			return new Date(s[0], s[1], s[2], s[3], s[4]);
+			return new Date(s[0],s[1],s[2],s[3],s[4]);
 		},
 
 		handleAppointmentSelect: function(oEvent) {
 			var oAppointment = oEvent.getParameter("appointment"),sSelected;
+			if(oAppointment){
+				//sSelected = oAppointment.getSelected() ? "selected" : "deselected";
+				sap.m.MessageBox.information(
+					"TASK: " + oAppointment.getTitle()
+					+ "\n\n Start Time: " +oAppointment.getStartDate()
+					+ "\n End Time: " +oAppointment.getEndDate()
+					+"\n Engineer: "+oAppointment.getText()
+					+"\n Team: "+oAppointment.getKey(),{
+						icon: sap.m.MessageBox.Icon.INFORMATION,
+          	title: "Task Details",
+						actions: [sap.m.MessageBox.Action.DELETE,sap.m.MessageBox.Action.OK],
+
+						onClose: function(sAction) {
+							if(sAction == 'DELETE'){
+								sap.m.MessageBox.alert("Delete this appointment?",{
+									title: "Confirm Delete",
+									actions:[sap.m.MessageBox.Action.NO, sap.m.MessageBox.Action.YES],
+									onClose: function(oAction){
+										if(oAction == 'YES'){
+
+																			var email = oAppointment.getText();
+																			var task = oAppointment.getTitle();
+																			var team = oAppointment.getKey();
+																			var startTime = oAppointment.getStartDate();
+																			var endTime = oAppointment.getEndDate();
+
+
+
+																			var startYear = startTime.getFullYear();
+																			var startMonth = startTime.getUTCMonth();
+																			var startDay = startTime.getUTCDate();
+
+																			var endYear = endTime.getFullYear();
+																			var endMonth = endTime.getUTCMonth();
+																			var endDay = endTime.getUTCDate();
+
+																				document.location.href="controller/deleteAppointment.php?email="+email
+																				+"&task="+task
+																				+"&team="+team
+
+																				+"&startYear="+startTime.getFullYear()
+																				+"&startMonth="+startTime.getUTCMonth()
+																				+"&startDay="+startTime.getUTCDate()
+																				+"&startHour="+startTime.getHours()
+																				+"&startMinutes="+startTime.getMinutes()
+
+																				+"&endYear="+endTime.getFullYear()
+																				+"&endMonth="+endTime.getUTCMonth()
+																				+"&endDay="+endTime.getUTCDate()
+																				+"&endHour="+endTime.getHours()
+																				+"&endMinutes="+endTime.getMinutes()
+																			}
+										}
+									}
+								);
+								//sap.m.MessageToast.show(oAppointment.getStartDate());
+							}
+						}
+					}
+				);
+			} else {
+				var aAppointments = oEvent.getParameter("appointments");
+				var sValue = aAppointments.length + " Appointments selected";
+				sap.m.MessageBox.show(sValue);
+			}
 		}
+
+
 
 
 

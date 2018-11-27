@@ -1,8 +1,18 @@
-<mvc:View controllerName="productSupport.scheduler.controller.EngineerList" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:core="sap.ui.core" xmlns:unified="sap.ui.unified">
+<mvc:View controllerName="productSupport.scheduler.controller.EngineerList"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:unified="sap.ui.unified">
 	<Carousel id="calendarCarousel">
-
-		<PlanningCalendar appointmentSelect="handleAppointmentSelect" class="sapUiSmallMargin" id = "engineerList" height="auto" width="auto" rows="{path: 'engineer>/ADMIN'}" showRowHeaders="true">
+		<PlanningCalendar
+			appointmentSelect="handleAppointmentSelect"
+			class="sapUiSmallMargin"
+			id = "engineerList"
+			height="auto"
+			width="auto"
+			rows="{path: 'engineer>/ADMIN'}"
+			showRowHeaders="true"
+>
 			<toolbarContent title="Admin">
 				<Title text="ADMIN"/>
 				<ToolbarSpacer/>
@@ -14,13 +24,19 @@
 					press="onRefresh"/>
 			</toolbarContent>
 			<rows>
-				<PlanningCalendarRow class="sapUiSmallMargin" title="{engineer>fname} {engineer>lname}" text="{engineer>email}" appointments="{path: 'engineer>appointments', templateShareable: 'true'}">
+				<PlanningCalendarRow class="sapUiSmallMargin"
+					title="{engineer>fname} {engineer>lname}"
+					text="{engineer>email}"
+					appointments="{path: 'engineer>appointments',
+					templateShareable: 'true'}"
+				>
 					<appointments>
 						<unified:CalendarAppointment
 								startDate="{path: 'engineer>start', formatter: '.dateFormatter'}"
 								endDate="{path: 'engineer>end', formatter: '.dateFormatter'}"
 								title="{engineer>title}"
-								text="{engineer>info}"
+								text="{engineer>email}"
+								key="{engineer>team}"
 								tentative="{tentative}">
 						</unified:CalendarAppointment>
 					</appointments>
@@ -28,7 +44,12 @@
 			</rows>
 		</PlanningCalendar>
 
-		<PlanningCalendar class="sapUiSmallMargin" id = "engineerList2" height="auto" width="auto" rows="{path: 'engineer>/WEBI', parameters: {$count: true}}">
+		<PlanningCalendar
+			appointmentSelect="handleAppointmentSelect"
+			class="sapUiSmallMargin" id = "engineerList2"
+			height="auto"
+			width="auto"
+			rows="{path: 'engineer>/WEBI', parameters: {$count: true}}">
 			<toolbarContent>
 				<Title text="WEBI"/>
 			</toolbarContent>
@@ -39,7 +60,8 @@
 								startDate="{path: 'engineer>start', formatter: '.dateFormatter'}"
 								endDate="{path: 'engineer>end', formatter: '.dateFormatter'}"
 								title="{engineer>title}"
-								text="{engineer>info}"
+								text="{engineer>email}"
+								key="{engineer>team}"
 								type="{engineer>type}"
 								tentative="{tentative}">
 						</unified:CalendarAppointment>

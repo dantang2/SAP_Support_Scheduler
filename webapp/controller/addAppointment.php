@@ -32,7 +32,7 @@
     $startTime = Array($startYear,$startMonth,$startDay,$startHour,$startMinutes);
     $endTime = Array($startYear,$startMonth,$startDay,$endHour,$endMinutes);
 
-    $appointments[$numOfDays] = Array('start'=>$startTime, 'end'=>$endTime, 'title'=>$task, 'info'=>"test", 'type'=>"Type07");
+    $appointments[$numOfDays] = Array('start'=>$startTime, 'end'=>$endTime, 'title'=>$task, 'info'=>"test", 'type'=>"Type07", 'team' => $team, 'email'=> $email);
 
     $startDay = $startDay + 1;
     $numOfDays = $numOfDays - 1;

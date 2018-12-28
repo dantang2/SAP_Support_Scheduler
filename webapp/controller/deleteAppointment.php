@@ -24,13 +24,10 @@
   //$endDate = Array($endYear,$endMonth,$endDay,$endHour,$endMinutes);
 
   $startTime = Array($startYear,$startMonth,$startDay,$startHour,$startMinutes);
-  $endTime = Array($startYear,$startMonth,$startDay,$endHour,$endMinutes);
+  $endTime = Array($endYear,$endMonth,$endDay,$endHour,$endMinutes);
 
-  $thisAppointment = Array('start'=>$startTime, 'end'=>$endTime, 'title'=>$task);
+  $thisAppointment = Array('start'=>$startTime, 'end'=>$endTime, 'email'=>$email);
 
-
-
-  $conn = connectToDB();
 
   $jsonFile = $_SERVER['DOCUMENT_ROOT'].'/PS_Scheduler/webapp/Engineers.json';
 
@@ -42,14 +39,16 @@
 
 
     foreach ($data[$team] as $e){
-      if ($e['email']==$email){
-        foreach($e['appointments'] as $anAppointment){
-            if($anAppointment['title']==$thisAppointment['title']&&$anAppointment['start']==$thisAppointment['start']&&$anAppointment['end']==$thisAppointment['end']){
-              $user = array_search($e,$data[$team]);
+      echo "test";
+      if ($e['task']==$task){
+        echo "test1";
+        $index = array_search($e,$data[$team]);
+        foreach($data[$team][$index]['appointments'] as $anAppointment){
+          if($anAppointment['email']==$thisAppointment['email']&&$anAppointment['start']==$thisAppointment['start']&&$anAppointment['end']==$thisAppointment['end']){
+            echo "test2";
+              $a = array_search($anAppointment,$data[$team][$index]['appointments']);
 
-              $index = array_search($anAppointment,$data[$team][$user]['appointments']);
-
-              unset($data[$team][$user]['appointments'][$index]);
+              unset($data[$team][$index]['appointments'][$a]);
 
               $newJsonString = json_encode($data);
               file_put_contents($jsonFile, $newJsonString);

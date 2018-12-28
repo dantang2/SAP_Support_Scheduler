@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" controllerName="productSupport.scheduler.controller.AddTaskDialog">
+	<Dialog id="addTaskDialog" title="Add Task">
+		<content>
+			<form:Form width="auto" editable="true" visible="true">
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:fields>
+									<Input type="Text" fieldGroupIds="taskname_input" placeholder="Enter Task Name" name="taskname" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"
+										maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+		</content>
+		<beginButton>
+			<Button type="Reject" text="Cancel" press="onCloseDialog"/>
+		</beginButton>
+		<endButton>
+			<Button type="Accept" value="test" text="Add" press="onAddTask"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

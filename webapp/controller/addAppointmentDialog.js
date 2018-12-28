@@ -10,22 +10,11 @@ sap.ui.define([
 	return Controller.extend("productSupport.scheduler.controller.AddAppointmentDialog", {
 
 		onInit: function () {
-			/*var oModel = new sap.ui.model.json.JSONModel("http:"+"//services.odata.org/V3/northwind/northwind.svc/Customers?$format=json");
-
-			sap.ui.getCore().setModel(oModel,"eng");
-
-			var oModel_2 = new sap.ui.model.json.JSONModel("Appointments.json");
-			sap.ui.getCore().setModel(oModel_2,"Appointments");*/
 
 			var oModel = new JSONModel(sap.ui.require.toUrl("productSupport.scheduler.Engineers"));
 			this.getView().setModel(oModel);
 
 		},
-
-
-		/*exit: function () {
-			delete this._oView;
-		},*/
 
 		open: function () {
 			if (!this._oDialog){

@@ -13,6 +13,7 @@ sap.ui.define([
 	"use strict";
 
 	return Controller.extend("productSupport.scheduler.EngineerList", {
+
 		onInit: function () {
 				var oJSONData = {
 					busy : false,
@@ -33,14 +34,13 @@ sap.ui.define([
 
 		handleAppointmentSelect: function(oEvent) {
 			var oAppointment = oEvent.getParameter("appointment"),sSelected;
+			console.log(oAppointment.getKey());
 			if(oAppointment){
 				//sSelected = oAppointment.getSelected() ? "selected" : "deselected";
 				sap.m.MessageBox.information(
-					"TASK: " + oAppointment.getTitle()
-					+ "\n\n Start Time: " +oAppointment.getStartDate()
+					"Start Time: " +oAppointment.getStartDate()
 					+ "\n End Time: " +oAppointment.getEndDate()
-					+"\n Engineer: "+oAppointment.getText()
-					+"\n Team: "+oAppointment.getKey(),{
+					+"\n Engineer: "+oAppointment.getText(),{
 						icon: sap.m.MessageBox.Icon.INFORMATION,
           	title: "Task Details",
 						actions: [sap.m.MessageBox.Action.DELETE,sap.m.MessageBox.Action.OK],
@@ -53,38 +53,30 @@ sap.ui.define([
 									onClose: function(oAction){
 										if(oAction == 'YES'){
 
-																			var email = oAppointment.getText();
-																			var task = oAppointment.getTitle();
-																			var team = oAppointment.getKey();
-																			var startTime = oAppointment.getStartDate();
-																			var endTime = oAppointment.getEndDate();
+											var email = oAppointment.getText();
+											var str = oAppointment.getKey().split(" ");
+											var task = str[1];
+											var team = str[0];
+											var startTime = oAppointment.getStartDate();
+											var endTime = oAppointment.getEndDate();
 
 
+												document.location.href="controller/deleteAppointment.php?email="+email
+												+"&task="+task
+												+"&team="+team
 
-																			var startYear = startTime.getFullYear();
-																			var startMonth = startTime.getUTCMonth();
-																			var startDay = startTime.getUTCDate();
+												+"&startYear="+startTime.getFullYear()
+												+"&startMonth="+startTime.getUTCMonth()
+												+"&startDay="+startTime.getDate()
+												+"&startHour="+startTime.getHours()
+												+"&startMinutes="+startTime.getMinutes()
 
-																			var endYear = endTime.getFullYear();
-																			var endMonth = endTime.getUTCMonth();
-																			var endDay = endTime.getUTCDate();
-
-																				document.location.href="controller/deleteAppointment.php?email="+email
-																				+"&task="+task
-																				+"&team="+team
-
-																				+"&startYear="+startTime.getFullYear()
-																				+"&startMonth="+startTime.getUTCMonth()
-																				+"&startDay="+startTime.getUTCDate()
-																				+"&startHour="+startTime.getHours()
-																				+"&startMinutes="+startTime.getMinutes()
-
-																				+"&endYear="+endTime.getFullYear()
-																				+"&endMonth="+endTime.getUTCMonth()
-																				+"&endDay="+endTime.getUTCDate()
-																				+"&endHour="+endTime.getHours()
-																				+"&endMinutes="+endTime.getMinutes()
-																			}
+												+"&endYear="+endTime.getFullYear()
+												+"&endMonth="+endTime.getUTCMonth()
+												+"&endDay="+endTime.getDate()
+												+"&endHour="+endTime.getHours()
+												+"&endMinutes="+endTime.getMinutes()
+											}
 										}
 									}
 								);
@@ -98,10 +90,48 @@ sap.ui.define([
 				var sValue = aAppointments.length + " Appointments selected";
 				sap.m.MessageBox.show(sValue);
 			}
+		},
+
+		handleAppointmentDrop: function (oEvent){
+			var oAppointment = oEvent.getParameter("appointment"),
+				oStartDate = oEvent.getParameter("startDate"),
+				oEndDate = oEvent.getParameter("endDate"),
+				oCalendarRow = oEvent.getParameter("calendarRow"),
+				bCopy = oEvent.getParameter("copy"),
+				oModel = this.getView().getModel(),
+				oAppBindingContext = oAppointment.getBindingContext(),
+				oRowBindingContext = oCalendarRow.getBindingContext(),
+				handleAppointmentDropBetweenRows = function () {
+					var aPath = oAppBindingContext.getPath().split("/"),
+						iIndex = aPath.pop(),
+						sRowAppointmentsPath = aPath.join("/");
+
+					oRowBindingContext.getObject().appointments.push(
+						oModel.getProperty(oAppBindingContext.getPath())
+					);
+
+					oModel.getProperty(sRowAppointmentsPath).splice(iIndex, 1);
+				};
+
+			if (bCopy) { // "copy" appointment
+				var oProps = jQuery.extend({}, oModel.getProperty(oAppointment.getBindingContext().getPath()));
+				oProps.start = oStartDate;
+				oProps.end = oEndDate;
+
+				oRowBindingContext.getObject().appointments.push(oProps);
+			} else { // "move" appointment
+				oModel.setProperty("start", oStartDate, oAppBindingContext);
+				oModel.setProperty("end", oEndDate, oAppBindingContext);
+
+				if (oAppointment.getParent() !== oCalendarRow) {
+					handleAppointmentDropBetweenRows();
+				}
+			}
+
+			oModel.refresh(true);
+
+			sap.m.MessageToast.show(oCalendarRow.getTitle() + "'s '" + "Appointment '" + oAppointment.getTitle() + "' now starts at \n" + oStartDate + "\n and end at \n" + oEndDate + ".");
 		}
-
-
-
 
 
 	});

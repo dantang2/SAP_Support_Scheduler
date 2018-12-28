@@ -7,28 +7,27 @@
 		<PlanningCalendar
 			appointmentSelect="handleAppointmentSelect"
 			class="sapUiSmallMargin"
-			id = "engineerList"
+			id = "adminCalendar"
 			height="auto"
 			width="auto"
 			rows="{path: 'engineer>/ADMIN'}"
 			showRowHeaders="true"
->
+			viewKey="Week"
+			>
 			<toolbarContent title="Admin">
 				<Title text="ADMIN"/>
 				<ToolbarSpacer/>
-				<SearchField id="searchField" width="20%" placeholder="Search" search="onSearch"/>
-				<Button id="sortUsersButton" press="onSort" tooltip="Search" icon="sap-icon://sort"/>
-				<Button id="refreshUsersButton"
-					icon="sap-icon://refresh"
-					tooltip="{i18n>refreshButtonText}"
-					press="onRefresh"/>
 			</toolbarContent>
 			<rows>
-				<PlanningCalendarRow class="sapUiSmallMargin"
-					title="{engineer>fname} {engineer>lname}"
-					text="{engineer>email}"
+				<PlanningCalendarRow
+					title="{engineer>task}"
+					text=""
 					appointments="{path: 'engineer>appointments',
 					templateShareable: 'true'}"
+					enableAppointmentsDragAndDrop = 'true'
+					appointmentDrop = "handleAppointmentDrop"
+					enableAppointmentsResize = 'true'
+					enableAppointmentsCreate = 'true'
 				>
 					<appointments>
 						<unified:CalendarAppointment
@@ -36,7 +35,7 @@
 								endDate="{path: 'engineer>end', formatter: '.dateFormatter'}"
 								title="{engineer>title}"
 								text="{engineer>email}"
-								key="{engineer>team}"
+								key="{engineer>team} {engineer>info}"
 								tentative="{tentative}">
 						</unified:CalendarAppointment>
 					</appointments>
@@ -46,23 +45,32 @@
 
 		<PlanningCalendar
 			appointmentSelect="handleAppointmentSelect"
-			class="sapUiSmallMargin" id = "engineerList2"
+			class="sapUiSmallMargin"
+			id = "webiCalendar"
 			height="auto"
 			width="auto"
-			rows="{path: 'engineer>/WEBI', parameters: {$count: true}}">
-			<toolbarContent>
+			rows="{path: 'engineer>/WEBI'}"
+			showRowHeaders="true"
+			viewKey="Week"
+			>
+			<toolbarContent title="WEBI">
 				<Title text="WEBI"/>
+				<ToolbarSpacer/>
+
 			</toolbarContent>
 			<rows>
-				<PlanningCalendarRow title="{engineer>fname} {engineer>lname}" text="{engineer>email}" appointments="{path: 'engineer>appointments', templateShareable: 'true'}">
+				<PlanningCalendarRow class="sapUiSmallMargin"
+					title="{engineer>task}"
+					appointments="{path: 'engineer>appointments',
+					templateShareable: 'true'}"
+				>
 					<appointments>
 						<unified:CalendarAppointment
 								startDate="{path: 'engineer>start', formatter: '.dateFormatter'}"
 								endDate="{path: 'engineer>end', formatter: '.dateFormatter'}"
 								title="{engineer>title}"
 								text="{engineer>email}"
-								key="{engineer>team}"
-								type="{engineer>type}"
+								key="{engineer>team} {engineer>info}"
 								tentative="{tentative}">
 						</unified:CalendarAppointment>
 					</appointments>

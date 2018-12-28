@@ -7,8 +7,8 @@ sap.ui.define([
 			this.getView().getModel();
 		},
 
-		onOpenDialog: function () {
-			this.getOwnerComponent().openAddEngineerDialog();
+		onOpenTaskDialog: function () {
+			this.getOwnerComponent().openAddTaskDialog();
 		},
 
 		onOpenEditDialog: function () {

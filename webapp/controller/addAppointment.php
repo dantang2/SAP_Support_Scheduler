@@ -2,6 +2,7 @@
   include($_SERVER['DOCUMENT_ROOT'].'/PS_Scheduler/connectToDB.php');
 
   $email = $_GET['email'];
+  $eng_name = $_GET['eng_name'];
   $task = $_GET['task'];
   $team = $_GET['team'];
 
@@ -32,46 +33,31 @@
     $startTime = Array($startYear,$startMonth,$startDay,$startHour,$startMinutes);
     $endTime = Array($startYear,$startMonth,$startDay,$endHour,$endMinutes);
 
-    $appointments[$numOfDays] = Array('start'=>$startTime, 'end'=>$endTime, 'title'=>$task, 'info'=>"test", 'type'=>"Type07", 'team' => $team, 'email'=> $email);
+    $appointments[$numOfDays] = Array('start'=>$startTime, 'end'=>$endTime, 'title'=>$eng_name, 'info'=>$task, 'team' => $team, 'email'=> $email);
 
     $startDay = $startDay + 1;
     $numOfDays = $numOfDays - 1;
   }
 
 
-
-  $conn = connectToDB();
-
   $jsonFile = $_SERVER['DOCUMENT_ROOT'].'/PS_Scheduler/webapp/Engineers.json';
 
   try{
 
-    //Add to DB
-    /*$sql = "INSERT INTO Engineers (email,fname,lname,team) VALUES($email,$fname,$lname,$team);";
-
-    $conn->exec($sql);
-    echo "Engineer Added";*/
-
-
     $jsonString = file_get_contents($jsonFile);
     $data = json_decode($jsonString, true);
 
-
-    foreach ($data[$team] as $e){
-      if ($e['email']==$email){
-        $index = array_search($e,$data[$team]);
-        foreach($appointments as $app){
-          array_push($data[$team][$index]['appointments'],$app);
-          $newJsonString = json_encode($data);
+    foreach($data[$team] as $t){
+      if($t['task']==$task){
+        $index = array_search($t, $data[$team]);
+        foreach($appointments as $a){
+          array_push($data[$team][$index]['appointments'],$a);
         }
+        $newJsonString = json_encode($data);
         file_put_contents($jsonFile, $newJsonString);
-        echo "success";
         break;
-      } else{
-        //echo "engineer not found";
       }
     }
-
 
   }
   catch(PDOException $e){

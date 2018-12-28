@@ -11,12 +11,6 @@
 
   try{
 
-    //Add to DB
-    /*$sql = "INSERT INTO Engineers (email,fname,lname,team) VALUES($email,$fname,$lname,$team);";
-
-    $conn->exec($sql);
-    echo "Engineer Added";*/
-
     $jsonString = file_get_contents($jsonFile);
     $data = json_decode($jsonString, true);
 

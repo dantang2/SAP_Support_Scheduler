@@ -38,6 +38,7 @@
 										<items>
 											<core:Item key="CHAT" text="CHAT" enabled="true"/>
 											<core:Item key="MCS" text="MCS" enabled="true"/>
+											<core:Item key="VACATION" text="VACATION" enabled="true"/>
 										</items>
 									</Select>
 								</form:fields>
